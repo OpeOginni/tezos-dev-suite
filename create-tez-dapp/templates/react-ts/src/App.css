@@ -1,0 +1,101 @@
+.App {
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  align-items: center;
+}
+
+.text {
+  color: white;
+}
+.network {
+  font-size: large;
+  font-weight: 400;
+  font: bold;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+.walletButton {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: white;
+  background-color: #0d61ff;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.walletButton:hover {
+  border-color: #646cff;
+}
+.walletButton:focus,
+.walletButton:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.title {
+  color: white;
+}
+
+.home_main {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.text_1{
+  font-weight: 900;
+}
+
+.text_2{
+  font-weight: 500;
+}
+
+.container{
+display: flex;
+justify-content: center;
+place-items: center;
+flex-direction: column;
+}
+.connectedMesssage{
+  color: white
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

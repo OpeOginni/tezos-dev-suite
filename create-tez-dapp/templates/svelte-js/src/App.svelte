@@ -2,7 +2,7 @@
   import { NetworkType } from "@airgap/beacon-types";   
   import { TezosToolkit } from "@taquito/taquito";
 
-  import ConnectWallet from './lib/ConnectWallet.svelte';
+  import ConnectWallet from './lib/ConnectWalletComponent.svelte';
   import Network from './lib/Network.svelte';
 
   let currentNetwork = NetworkType.GHOSTNET; // Default selected network
@@ -39,12 +39,12 @@
       <h1 class="title">Create-Tez-Dapp</h1>
       <p class="text_1">Simple Svelte + JS Project to Get Started Creating Tezos Dapps</p>
   
-      <p class="text_2">Update the App.svelte file to make Changes</p>
+      <p class="text_2">Update the <code>App.svelte</code> file to make Changes</p>
       <div>
         <div class="connectedMesssage">
           {#if wallet}
       <p>Connected Address: {walletAddress}.</p>
-      <p>TEZ balance: {walletBalance}.</p>
+      <p>TEZ balance: {walletBalance} TEZ.</p>
       <p>
         To get GHOSTNET tez, go to <a
           href="https://faucet.ghostnet.teztnets.com/"

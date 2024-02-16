@@ -40,7 +40,12 @@ inquirer.prompt(PROMPTS).then(answers => {
     const projectName = answers['project-name'];
     const templatePath = path.join(__dirname, '..', `templates/${projectChoice}`);
 
+    console.log(`creating a new Tezos Dapp in ${chalk.green(`${CURR_DIR}/${projectName}`)}.`)
     fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
     createDirectoryContents(templatePath, projectName);
+
+    console.log("Done. Now run:\n\n")
+    console.log("npm install")
+    console.log("npm run dev")
 })

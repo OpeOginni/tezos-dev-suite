@@ -18,7 +18,7 @@
 
     async function connectWallet() {
         const newWallet = new BeaconWallet({
-          name: "Simple dApp tutorial",
+          name: "Tezos dApp Boilerplate",
           network: {
            type: networkType,
           },
