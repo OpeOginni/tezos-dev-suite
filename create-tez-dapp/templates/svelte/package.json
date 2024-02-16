@@ -1,0 +1,24 @@
+{
+  "name": "svelte",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "svelte": "^4.2.10",
+    "vite": "^5.1.0",
+    "vite-compatible-readable-stream": "^3.6.1"
+  },
+  "dependencies": {
+    "@airgap/beacon-types": "^4.1.2",
+    "@taquito/beacon-wallet": "^19.0.2",
+    "@taquito/taquito": "^19.0.2"
+  }
+}
