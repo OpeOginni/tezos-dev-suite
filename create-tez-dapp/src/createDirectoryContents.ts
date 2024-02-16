@@ -10,9 +10,16 @@ export default function createDirectoryContents(templatePath: string, newProject
         const stats = fs.statSync(origFilePath)
 
         if (stats.isFile()) {
-            const contents = fs.readFileSync(origFilePath, 'utf8')
+            let contents = fs.readFileSync(origFilePath, 'utf8')
 
             if (file === '_gitignore') file = '.gitignore';
+
+            if (file === 'package.json') {
+                const packageJson = JSON.parse(contents);
+                packageJson.name = newProjectPath;
+                contents = JSON.stringify(packageJson, null, 2);
+            }
+
 
             const writePath = `${CURR_DIR}/${newProjectPath}/${file}`
             fs.writeFileSync(writePath, contents, 'utf8')
@@ -24,7 +31,7 @@ export default function createDirectoryContents(templatePath: string, newProject
 
             createDirectoryContents(
                 `${templatePath}/${file}`,
-                `${newProjectPath}/${file}`
+                `${newProjectPath}/${file}`,
             )
         }
     })

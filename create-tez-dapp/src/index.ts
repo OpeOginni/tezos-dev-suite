@@ -27,7 +27,7 @@ const PROMPTS = [
         type: 'input',
         message: 'Project name:',
         validate: function (input: string) {
-            if (/^(?:@[a-z\d\-*~][a-z\d\-*._~]*\/)?[a-z\d\-~][a-z\d\-._~]*$/.test(input)) return true;
+            if (/^(?:@[a-zA-Z\d\-*~][a-zA-Z\d\-*._~]*\/)?[a-zA-Z\d\-~][a-zA-Z\d\-._~]*$/.test(input)) return true;
             else
                 return 'Project name may only include letters, numbers, underscores and hashes.';
         },
@@ -37,7 +37,7 @@ const PROMPTS = [
 
 inquirer.prompt(PROMPTS).then(answers => {
 
-    const projectChoice = answers['project-choice'];
+    const projectChoice = answers['project-choice'].replace(/ /g, '-').replace(/\+/g, '-').toLowerCase();
     const projectName = answers['project-name'].trim()
         .toLowerCase()
         .replace(/\s+/g, '-')
@@ -49,8 +49,11 @@ inquirer.prompt(PROMPTS).then(answers => {
     fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
     createDirectoryContents(templatePath, projectName);
+    console.log("\n\n")
 
-    console.log("Done. Now run:\n\n")
+    console.log("Done. Now run:\n")
+
+    console.log(`cd ${projectName}`)
     console.log("npm install")
     console.log("npm run dev")
 })

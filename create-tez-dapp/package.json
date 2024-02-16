@@ -24,7 +24,8 @@
     "start": "bun dist/index.js",
     "link": "npm link",
     "unlink": "npm unlink create-tez-dapp",
-    "publish": "bun run build && npm publish"
+    "publish": "bun run build && npm publish",
+    "local": "bun run build && bun run unlink && bun run link"
   },
   "bin": {
     "create-tez-dapp": "./dist/index.js"
