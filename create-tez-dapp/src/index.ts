@@ -27,17 +27,22 @@ const PROMPTS = [
         type: 'input',
         message: 'Project name:',
         validate: function (input: string) {
-            if (/^[A-Za-z0-9\-_#]+$/.test(input)) return true;
+            if (/^(?:@[a-z\d\-*~][a-z\d\-*._~]*\/)?[a-z\d\-~][a-z\d\-._~]*$/.test(input)) return true;
             else
                 return 'Project name may only include letters, numbers, underscores and hashes.';
         },
     },
 ]
 
+
 inquirer.prompt(PROMPTS).then(answers => {
 
     const projectChoice = answers['project-choice'];
-    const projectName = answers['project-name'];
+    const projectName = answers['project-name'].trim()
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/^[._]/, '')
+        .replace(/[^a-z\d\-~]+/g, '-');
     const templatePath = path.join(__dirname, '..', `templates/${projectChoice}`);
 
     console.log(`creating a new Tezos Dapp in ${chalk.green(`${CURR_DIR}/${projectName}`)}.`)
