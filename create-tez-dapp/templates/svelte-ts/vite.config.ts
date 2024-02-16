@@ -1,37 +1,35 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig, mergeConfig } from "vite";
 import path from "path";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 
-// https://vitejs.dev/config/
-export default ({ command }) => {
+export default ({ command }: { command: string }) => {
   const isBuild = command === "build";
 
   return defineConfig({
-    plugins: [react()],
+    plugins: [svelte()],
     define: {
-      global: {},
+      global: {}
     },
     build: {
       target: "esnext",
       commonjsOptions: {
-        transformMixedEsModules: true,
-      },
+        transformMixedEsModules: true
+      }
     },
     server: {
-      port: 3000,
+      port: 4000
     },
     resolve: {
       alias: {
         "@airgap/beacon-types": path.resolve(
           path.resolve(),
-          `./node_modules/@airgap/beacon-types/dist/${
-            isBuild ? "esm" : "cjs"
+          `./node_modules/@airgap/beacon-types/dist/${isBuild ? "esm" : "cjs"
           }/index.js`
         ),
         // polyfills
         "readable-stream": "vite-compatible-readable-stream",
-        stream: "vite-compatible-readable-stream",
-      },
-    },
+        stream: "vite-compatible-readable-stream"
+      }
+    }
   });
 };

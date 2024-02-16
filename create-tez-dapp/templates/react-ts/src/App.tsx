@@ -52,9 +52,9 @@ function App() {
 
       <div className="main">
         <div className="container">
-          <h1 className="title">Create-Tez-Dapp</h1>
+          <h1 className="title">Create-Tez-dApp</h1>
           <p className="text_1">
-            Simple React + TS Project to Get Started Creating Tezos Dapps
+            Simple React + TS Project to Get Started Creating Tezos dApps
           </p>
 
           <p className="text_2">

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { createEventDispatcher } from 'svelte';
     import { BeaconWallet } from "@taquito/beacon-wallet";
     import { TezosToolkit } from "@taquito/taquito";
@@ -6,14 +6,14 @@
 
     const dispatch = createEventDispatcher();
   
-    export let rpcUrl; // Receive rpcUrl as a prop
-    export let networkType; // Receive rpcUrl as a prop
+    export let rpcUrl: string; // Receive rpcUrl as a prop
+    export let networkType: NetworkType; // Receive rpcUrl as a prop
 
     const Tezos = new TezosToolkit(rpcUrl); // Use the received rpcUrl
 
-    let wallet;
-    let address;
-    let balance; 
+    let wallet: BeaconWallet | undefined;
+    let address: string;
+    let balance: string; 
 
     async function connectWallet() {
         const newWallet = new BeaconWallet({
@@ -31,13 +31,13 @@
 }
   
     function disconnectWallet() {
-      wallet.client.clearActiveAccount();
+      wallet!.client.clearActiveAccount();
       wallet = undefined;
 
       dispatch('disconnected');
     }
 
-    const getWalletBalance = async (walletAddress) => {
+    const getWalletBalance = async (walletAddress: string) => {
      const balanceMutez = await Tezos.tz.getBalance(walletAddress);
      balance = balanceMutez.div(1000000).toFormat(2);
   };

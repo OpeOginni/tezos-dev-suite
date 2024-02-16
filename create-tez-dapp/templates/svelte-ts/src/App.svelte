@@ -1,26 +1,27 @@
-<script>
+<script lang='ts'>
   import { NetworkType } from "@airgap/beacon-types";   
   import { TezosToolkit } from "@taquito/taquito";
 
   import ConnectWallet from './lib/ConnectWalletComponent.svelte';
   import Network from './lib/Network.svelte';
+  import type { BeaconWallet } from "@taquito/beacon-wallet/dist/types/taquito-beacon-wallet";
 
   let currentNetwork = NetworkType.GHOSTNET; // Default selected network
 
   let rpcUrl = "https://ghostnet.ecadinfra.com";
   const Tezos = new TezosToolkit(rpcUrl); // Use the received rpcUrl
 
-  let wallet;
-  let walletAddress;
-  let walletBalance;
+  let wallet: BeaconWallet | undefined;
+  let walletAddress: string | undefined;
+  let walletBalance: string | undefined;
 
-  function handleWalletConnected(event) {
+  function handleWalletConnected(event: CustomEvent<any>) {
     wallet = event.detail.newWallet
     walletAddress = event.detail.address;
-    getWalletBalance(walletAddress)
+    getWalletBalance(walletAddress!)
   }
 
-  const getWalletBalance = async (walletAddress) => {
+  const getWalletBalance = async (walletAddress: string) => {
      const balanceMutez = await Tezos.tz.getBalance(walletAddress);
      walletBalance = balanceMutez.div(1000000).toFormat(2);
   };
@@ -37,7 +38,7 @@
   <div class="main">
     <div class="container">
       <h1 class="title">Create-Tez-dApp</h1>
-      <p class="text_1">Simple Svelte + JS Project to Get Started Creating Tezos dApps</p>
+      <p class="text_1">Simple Svelte + TS Project to Get Started Creating Tezos dApps</p>
   
       <p class="text_2">Update the <code>App.svelte</code> file to make Changes</p>
       <div>
