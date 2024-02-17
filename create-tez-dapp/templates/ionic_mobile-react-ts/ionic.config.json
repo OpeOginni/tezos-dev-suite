@@ -1,0 +1,7 @@
+{
+  "name": "ionic_mobile-react-ts",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
