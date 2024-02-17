@@ -1,4 +1,4 @@
-# create-tez-dapp <a href="https://npmjs.com/package/create-vite"><img src="https://img.shields.io/npm/v/create-vite" alt="npm package"></a>
+# create-tez-dapp <a href="https://npmjs.com/package/create-tez-dapp"><img src="https://img.shields.io/npm/v/create-tez-dapp" alt="npm package"></a>
 
 ## Make Starting your Tezos dApp Easy and Convenient
 

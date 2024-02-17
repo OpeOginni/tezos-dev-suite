@@ -1,7 +1,7 @@
 {
   "name": "create-tez-dapp",
-  "version": "0.0.1",
-  "description": "A CLI to help developers start creating frontend dapps on Tezos",
+  "version": "0.0.2",
+  "description": "Scaffolding CLI to help developers get started with creating frontend dApps on the Tezos blockchain",
   "repository": {
     "type": "git",
     "url": "https://github.com/OpeOginni/tezos-dev-suite.git",
@@ -21,7 +21,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "start": "bun dist/index.js",
-    "publish": "bun run build && npm publish",
+    "publish-cli": "bun run build && npm publish",
     "local": "bun run build && bun run unlink && bun run link"
   },
   "bin": {
