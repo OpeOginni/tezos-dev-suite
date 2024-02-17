@@ -1,6 +1,6 @@
 {
   "name": "create-tez-dapp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Scaffolding CLI to help developers get started with creating frontend dApps on the Tezos blockchain",
   "repository": {
     "type": "git",
