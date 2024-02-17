@@ -13,7 +13,7 @@ const CURR_DIR = process.cwd()
 // dirname is not available in ES6 modules
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const PROJECT_CHOICED = fs.readdirSync(path.join(__dirname, '..', 'templates'))
+const PROJECT_CHOICED = fs.readdirSync(path.join(__dirname, '..', 'templates')).map(project => project.replace(/-/g, ' + ').replace(/_/g, ' '))
 
 const PROMPTS = [
     {
@@ -37,7 +37,7 @@ const PROMPTS = [
 
 inquirer.prompt(PROMPTS).then(answers => {
 
-    const projectChoice = answers['project-choice'].replace(/ /g, '-').replace(/\+/g, '-').toLowerCase();
+    const projectChoice = answers['project-choice'].replaceAll(' + ', '-').replaceAll(' ', '_').toLowerCase();
     const projectName = answers['project-name'].trim()
         .toLowerCase()
         .replace(/\s+/g, '-')
@@ -45,7 +45,7 @@ inquirer.prompt(PROMPTS).then(answers => {
         .replace(/[^a-z\d\-~]+/g, '-');
     const templatePath = path.join(__dirname, '..', `templates/${projectChoice}`);
 
-    console.log(`creating a new Tezos Dapp in ${chalk.green(`${CURR_DIR}/${projectName}`)}.`)
+    console.log(`creating a new Tezos Dapp in ${chalk.green(`${CURR_DIR}/${projectName}`)}...`)
     fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
     createDirectoryContents(templatePath, projectName);

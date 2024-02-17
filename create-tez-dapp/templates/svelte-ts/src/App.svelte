@@ -56,10 +56,10 @@
       </p>
       <p>
         For Tutorials on Running Transactions on Frontend, go to <a
-          href="https://docs.tezos.com/tutorials/build-your-first-app"
+          href="https://docs.tezos.com/tutorials/build-your-first-app/sending-transactions"
           target="_blank"
         >
-          https://faucet.ghostnet.teztnets.com/
+        https://docs.tezos.com/tutorials/build-your-first-app/sending-transactions
         </a>.
       </p>
     {/if}

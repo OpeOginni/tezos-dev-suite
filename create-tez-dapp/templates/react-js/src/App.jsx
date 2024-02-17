@@ -27,6 +27,7 @@ function App() {
     if (address) {
       getWalletBalance(address);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address]);
 
   return (
@@ -78,10 +79,10 @@ function App() {
                   <p>
                     For Tutorials on Running Transactions on Frontend, go to{" "}
                     <a
-                      href="https://docs.tezos.com/tutorials/build-your-first-app"
+                      href="https://docs.tezos.com/tutorials/build-your-first-app/sending-transactions"
                       target="_blank"
                     >
-                      https://faucet.ghostnet.teztnets.com/
+                      https://docs.tezos.com/tutorials/build-your-first-app/sending-transactions
                     </a>
                     .
                   </p>
