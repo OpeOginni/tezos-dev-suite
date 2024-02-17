@@ -1,8 +1,9 @@
 **/node_modules/
 /src
+**/package-lock.json
 
 .DS_Store
 
 tsconfig.json
-tsup.config.js
+tsup.config.ts
 bun.lockb
