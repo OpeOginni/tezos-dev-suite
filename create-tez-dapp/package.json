@@ -12,24 +12,22 @@
   "keywords": [
     "tezos",
     "dapp",
-    "frontend"
+    "frontend",
+    "smart contract",
+    "blockchain"
   ],
   "scripts": {
     "typecheck": "tsc",
     "build": "tsup",
-    "prepare": "npm run build",
     "dev": "tsup --watch",
-    "run-dev": "tsup --watch && node dist/index.js",
-    "clean": "rm -rf dist",
     "start": "bun dist/index.js",
-    "link": "npm link",
-    "unlink": "npm unlink create-tez-dapp",
     "publish": "bun run build && npm publish",
     "local": "bun run build && bun run unlink && bun run link"
   },
   "bin": {
     "create-tez-dapp": "./dist/index.js"
   },
+  "homepage": "https://github.com/OpeOginni/tezos-dev-suite/blob/main/create-tez-dapp/README.md",
   "author": "opeoginni",
   "license": "MIT",
   "devDependencies": {
