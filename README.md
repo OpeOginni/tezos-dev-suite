@@ -20,6 +20,7 @@ Currently Deployed on NPM, why not [TRY](https://www.npmjs.com/package/create-te
 
 ```
 For the future, it would be nice to add more framework scaffolds, for example; NextJs and Unity.
+Also to integrate AI to analyze transactions that have not been verified by the system.
 ```
 
 ### 2) **Tezos Verify**
