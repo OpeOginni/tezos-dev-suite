@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Post {
+    id        Int      @id @default(autoincrement())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([name])
+}
+
+model Admin {
+    id           String   @id @default(uuid())
+    adminAddress String   @unique
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    contracts    Contract[]
+
+    @@index([adminAddress])
+}
+
+model Contract {
+    id               String   @id @default(uuid())
+    contractName     String
+    contractAddress  String   @unique
+
+    adminId          String
+    admin            Admin    @relation(fields: [adminId], references: [id])
+
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
+    entryPoints      EntryPoint[]
+    
+    @@unique([adminId, contractAddress])
+}
+
+model EntryPoint {
+    id                 Int                 @id @default(autoincrement())
+    name               String
+    description        String
+    arguments          String
+    
+    contractId         String
+    contract           Contract            @relation(fields: [contractId], references: [id])
+
+    verificationStatus VERIFICATION_STATUS @default(PENDING)
+
+    @@unique([name, contractId])
+}
+
+enum VERIFICATION_STATUS {
+    PENDING
+    APPROVED
+    REJECTED
+}

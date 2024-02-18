@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Post {
+    id        Int      @id @default(autoincrement())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([name])
+}
+
+model Admin {
+    id           String   @id @default(uuid())
+    adminAddress String   @unique
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    contracts    Contract[]
+
+    @@index([adminAddress])
+}
+
+model Contract {
+    id               String   @id @default(uuid())
+    contractName     String
+    constractAddress String   @unique
+
+    adminId          String
+    admin            Admin    @relation(fields: [adminId], references: [id])
+
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
+    entryPonints     EntryPoint[]
+    
+    @@unique([adminId, constractAddress])
+}
+
+model EntryPoint {
+    id            Int      @id @default(autoincrement())
+    name          String
+    description   String
+    arguments     String
+    
+    contractId    String
+    contract      Contract @relation(fields: [contractId], references: [id])
+
+    @@unique([name, contractId])
+}
+
+
+
+version: "3.8"
+services:
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    networks:
+      - net
+    volumes:
+      - db:/var/lib/postgresql/data
+networks:
+  net:
+    driver: bridge
+    name: net
+
+volumes:
+  db:
+    driver: local
+
+
+
+DATABASE_URL="postgresql://postgres:password@localhost:5432/tezos-verify?"
