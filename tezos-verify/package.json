@@ -20,6 +20,7 @@
     "@tanstack/react-query": "^5.21.4",
     "@taquito/beacon-wallet": "^19.0.2",
     "@taquito/taquito": "^19.0.2",
+    "@vercel/analytics": "^1.2.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.331.0",
